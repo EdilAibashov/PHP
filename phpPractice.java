@@ -52,6 +52,5 @@ public class phpPractice {
         System.out.println(today);
         String date = driver.findElement(By.xpath("//span[@class='h4']")).getText();
         Assert.assertEquals(date,today);
-
     }
 }
