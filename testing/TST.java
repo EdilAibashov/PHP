@@ -21,6 +21,17 @@ public class TST {
         driver.manage().window().maximize();
         driver.get(("http://practice.cybertekschool.com/"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String actualTitle = driver.getTitle();
+        System.out.println(actualTitle);
+        String expextedTitle = "Practice";
+        if(expextedTitle.equals(actualTitle)){
+            System.out.println("PASS!");
+        }else{
+            System.out.println("FAILED!");
+            System.out.println("Actual :"+actualTitle);
+            System.out.println("Expected :"+expextedTitle);
+        }
+
         driver.findElement(By.xpath("//a[.='A/B Testing']")).click();
         driver.findElement(By.className("nav-link")).click();
         driver.findElement(By.xpath("//a[starts-with(.,'Add/Remove')]")).click();
@@ -181,9 +192,12 @@ public class TST {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,-5000)");
         driver.findElement(By.className("nav-link")).click();
-
-
-
+        driver.findElement(By.xpath("//a[.='JQuery UI Menus']")).click();
+        WebElement first = driver.findElement(By.xpath("//a[@id='ui-id-3']"));
+        action.moveToElement(first).perform();
+        driver.findElement(By.id("ui-id-4")).click();
+        driver.findElement(By.id("ui-id-5")).click();
+        System.out.println(driver.findElement(By.id("ui-id-5")).getText());
 
 
     }
